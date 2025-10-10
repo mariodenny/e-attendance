@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('master_categories', function (Blueprint $table) {
+        Schema::create('student_histories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
+            $table->foreignId('student_id')->references('id')->on('students');
+            $table->foreignId('m_module_id')->references('id')->on('master_modules');
+            $table->enum('status', ["ACTIVE", "FINISH"]);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('master_categories');
+        Schema::dropIfExists('student_histories');
     }
 };

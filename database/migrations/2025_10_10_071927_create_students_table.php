@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('master_categories', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('m_module_id')->references('id')->on('master_modules');
             $table->string('name');
-            $table->string('description');
+            $table->string('date_of_birth')->nullable();
+            $table->string('address')->nullable();
+            $table->string('email');
+            $table->string('school');
+            $table->string('contact_person');
+            $table->string('phone_no');
             $table->timestamps();
         });
     }
@@ -24,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('master_categories');
+        Schema::dropIfExists('students');
     }
 };

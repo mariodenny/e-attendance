@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('master_categories', function (Blueprint $table) {
+        Schema::create('trials', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('m_module_id')->references('id')->on('master_modules');
+            $table->foreignId('teacher_id')->references('id')->on('teachers');
             $table->string('name');
-            $table->string('description');
+            $table->string('contact_person');
+            $table->string('phone_no');
+            $table->date('date');
+            $table->string('feedbacks');
             $table->timestamps();
         });
     }
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('master_categories');
+        Schema::dropIfExists('trials');
     }
 };

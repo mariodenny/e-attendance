@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('master_categories', function (Blueprint $table) {
+        Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
+            $table->foreignId('teacher_id')->references('id')->on('teachers');
+            $table->foreignId('student_id')->references('id')->on('students');
+            $table->foreignId('classroom_id')->references('id')->on('clasrooms');
+            $table->enum("status", ["Y", "N"]);
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('master_categories');
+        Schema::dropIfExists('attendances');
     }
 };
