@@ -47,10 +47,10 @@
                 @csrf
                 
                 <div class="mb-3">
-                  <label class="form-label">Email or Username</label>
-                  <input type="text" class="form-control form-control-user" name="login" 
+                  <label class="form-label">Email</label>
+                  <input type="text" class="form-control form-control-user" name="email" 
                          value="{{ old('login') }}" required autofocus
-                         placeholder="Enter your email or username">
+                         placeholder="Enter your email ">
                 </div>
                 
                 <div class="mb-3">

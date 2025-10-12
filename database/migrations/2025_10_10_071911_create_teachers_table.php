@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('name');
             $table->string('nik')->nullable();
-            $table->enum('level', ["Junior Koder", "Little Koders"]);
+            $table->enum('level', ["Junior Koders", "Little Koders"]);
             $table->enum('gender', ["Men", "Women"]);
             $table->timestamps();
         });

@@ -19,5 +19,9 @@ class AuthRepository
     {
         return $this->userModel->where('email', $email)->first();
     }
+
+    public function update($id, $data)
+    {
+        return $this->userModel->where('id', $id)->update($data);
+    }
 }
-    
