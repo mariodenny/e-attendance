@@ -6,8 +6,8 @@
   <title>@yield('title', 'Dashboard') - KodingNext Medan</title>
   
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/argon/img/apple-icon.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('assets/argon/img/favicon.png') }}">
+    {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/argon/img/apple-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/argon/img/favicon.png') }}"> --}}
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('contact_person');
             $table->string('phone_no');
             $table->date('date');
-            $table->string('feedbacks');
+            $table->string('feedbacks')->nullable();
             $table->timestamps();
         });
     }

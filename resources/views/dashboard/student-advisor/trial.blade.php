@@ -1,12 +1,16 @@
 @extends('layouts.dashboard')
-
-
-@section('Trial Student Data')
+@section('title','Form Trial Students ')
 
 @section('content')
 
 <div class="row">
-    <h1>Hello World!</h1>
+    <div class="col m-2 p-2">
+        <div class="form-group">
+            <form action="{{ route('student-advisor.trial.save') }}">
+                <!--TODO :: Design form insert-->
+            </form>
+        </div>
+    </div>
 </div>
 
 @endsection

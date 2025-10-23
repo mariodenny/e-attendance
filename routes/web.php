@@ -26,7 +26,8 @@ Route::middleware(['auth'])->group(function () {
 
 
 // TODO : nanti per role masing2 ada job nya, pisahin routenya biar rapi , group per-role
-Route::middleware(['auth'])->group(function(){
-    Route::get('/student-advisor/dashboard', [StudentAdvisorController::class,'dashboard'])->name('student-advisor.dashboard');
-    Route::get('/student-advisor/trial',[StudentAdvisorController::class,'formTrial'])->name('student-advisor.trial');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/student-advisor/dashboard', [StudentAdvisorController::class, 'dashboard'])->name('student-advisor.dashboard');
+    Route::get('/student-advisor/trial', [StudentAdvisorController::class, 'formTrial'])->name('student-advisor.trial');
+    Route::post('/student-advisor/trial', [StudentAdvisorController::class, 'store'])->name('student-advisor.trial.save');
 });
