@@ -13,7 +13,7 @@
   <!-- My Students -->
   <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('sa.students*') ? 'active' : '' }}" 
-       href="{{ route('sa.students.index') }}">
+       href="">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="ni ni-single-02 text-success text-sm opacity-10"></i>
       </div>
@@ -24,7 +24,7 @@
   <!-- Trial Students -->
   <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('sa.trials*') ? 'active' : '' }}" 
-       href="{{ route('sa.trials.index') }}">
+       href="">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="ni ni-spaceship text-warning text-sm opacity-10"></i>
       </div>
@@ -35,7 +35,7 @@
   <!-- Progress Tracking -->
   <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('sa.progress*') ? 'active' : '' }}" 
-       href="{{ route('sa.progress.tracking') }}">
+       href=""">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="ni ni-chart-bar-32 text-info text-sm opacity-10"></i>
       </div>
@@ -51,7 +51,7 @@
   <!-- At-Risk Students -->
   <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('sa.at-risk*') ? 'active' : '' }}" 
-       href="{{ route('sa.at-risk.index') }}">
+       href="">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="ni ni-notification-70 text-danger text-sm opacity-10"></i>
       </div>
@@ -62,7 +62,7 @@
   <!-- Parent Communications -->
   <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('sa.communications*') ? 'active' : '' }}" 
-       href="{{ route('sa.communications.index') }}">
+       href="">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="ni ni-send text-primary text-sm opacity-10"></i>
       </div>
@@ -73,7 +73,7 @@
   <!-- Conversion Reports -->
   <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('sa.conversion*') ? 'active' : '' }}" 
-       href="{{ route('sa.conversion.reports') }}">
+       href="">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="ni ni-chart-pie-35 text-success text-sm opacity-10"></i>
       </div>

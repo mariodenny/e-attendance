@@ -5,6 +5,7 @@
 @section('welcome-title')
     Welcome, {{ $teacherData->name }}
 @endsection
+
 @section('welcome-subtitle', 'Manage your classes and track student progress')
 
 @section('content')

@@ -2,7 +2,7 @@
 
 @section('title', 'Student Advisor Dashboard')
 
-@section('welcome-title', 'Student Success Center')
+@section('welcome-title', 'Student Advisor')
 @section('welcome-subtitle', 'Monitor student progress and provide academic guidance')
 
 @section('content')
@@ -15,7 +15,7 @@
           <div class="col-8">
             <div class="numbers">
               <p class="text-sm mb-0 text-uppercase font-weight-bold">Assigned Students</p>
-              <h5 class="font-weight-bolder mb-0">45</h5>
+              <h5 class="font-weight-bolder mb-0">{{ $studentTotals }}</h5>
             </div>
           </div>
           <div class="col-4 text-end">
@@ -75,7 +75,7 @@
           <div class="col-8">
             <div class="numbers">
               <p class="text-sm mb-0 text-uppercase font-weight-bold">Conversion Rate</p>
-              <h5 class="font-weight-bolder mb-0">68%</h5>
+              <h5 class="font-weight-bolder mb-0">{{ $conversionRate }}%</h5>
             </div>
           </div>
           <div class="col-4 text-end">
@@ -97,7 +97,7 @@
         <h6 class="text-white">Students Needing Attention</h6>
         <p class="text-white opacity-8 mb-0">Follow up required for these students</p>
       </div>
-      <div class="card-body p-3">
+      <div class="card-body p-2">
         <div class="table-responsive">
           <table class="table align-items-center mb-0">
             <thead>
@@ -143,16 +143,16 @@
       </div>
       <div class="card-body p-3">
         <div class="d-grid gap-2">
-          <a href="{{ route('students.advisor') }}" class="btn btn-sm bg-gradient-info mb-2">
-            <i class="ni ni-single-02 me-1"></i> My Students
+          <a href="" class="btn btn-sm bg-gradient-info mb-2">
+            <i class="ni ni-single-02 me-1"></i> Students
           </a>
-          <a href="{{ route('reports.progress') }}" class="btn btn-sm bg-gradient-success mb-2">
+          <a href="" class="btn btn-sm bg-gradient-success mb-2">
             <i class="ni ni-chart-bar-32 me-1"></i> Progress Reports
           </a>
-          <a href="{{ route('trial.students') }}" class="btn btn-sm bg-gradient-warning mb-2">
+          <a href="" class="btn btn-sm bg-gradient-warning mb-2">
             <i class="ni ni-spaceship me-1"></i> Trial Students
           </a>
-          <a href="{{ route('communications.index') }}" class="btn btn-sm bg-gradient-primary">
+          <a href="" class="btn btn-sm bg-gradient-primary">
             <i class="ni ni-send me-1"></i> Parent Communications
           </a>
         </div>

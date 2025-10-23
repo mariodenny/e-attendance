@@ -62,7 +62,7 @@
                   </p>
                 </div>
                 <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-white shadow text-center border-radius-lg">
+                  {{-- <div class="icon icon-shape bg-white shadow text-center border-radius-lg"> --}}
                     <i class="ni ni-single-02 text-{{ 
                       auth()->user()->role == 'SA' ? 'danger' : 
                       (auth()->user()->role == 'ADMIN' ? 'warning' : 

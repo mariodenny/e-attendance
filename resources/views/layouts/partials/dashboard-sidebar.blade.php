@@ -33,7 +33,7 @@
     <!-- Include Role-specific Sidebar -->
     @includeWhen(auth()->user()->role === 'TEACHER', 'layouts.partials.teacher-sidebar')
     @includeWhen(auth()->user()->role === 'MANAGER', 'layouts.partials.manager-sidebar')
-    @includeWhen(auth()->user()->role === 'SA', 'layouts.partials.sa-sidebar')
+    @includeWhen(auth()->user()->role === 'SA', 'layouts.partials.student-advisor-sidebar')
     @includeWhen(auth()->user()->role === 'ADMIN', 'layouts.partials.admin-sidebar')
   </div>
 </aside>
