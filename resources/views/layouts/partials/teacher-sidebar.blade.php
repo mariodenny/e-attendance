@@ -14,7 +14,7 @@
     <!-- My Classes -->
     <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('teacher.classes*') ? 'active' : '' }}"
-            href="{{ route('teacher.classes.index') }}">
+            href="">
             <div
                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-hat-3 text-success text-sm opacity-10"></i>
@@ -26,7 +26,7 @@
     <!-- Attendance -->
     <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('teacher.attendance*') ? 'active' : '' }}"
-            href="{{ route('teacher.attendance.index') }}">
+            href="">
             <div
                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-check-bold text-warning text-sm opacity-10"></i>
@@ -38,7 +38,7 @@
     <!-- Lesson Materials -->
     <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('teacher.lessons*') ? 'active' : '' }}"
-            href="{{ route('teacher.lessons.index') }}">
+            href="">
             <div
                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-books text-info text-sm opacity-10"></i>
@@ -50,7 +50,7 @@
     <!-- Student Progress -->
     <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('teacher.progress*') ? 'active' : '' }}"
-            href="{{ route('teacher.progress.index') }}">
+            href="">
             <div
                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-chart-bar-32 text-danger text-sm opacity-10"></i>
@@ -65,7 +65,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('teacher.reports*') ? 'active' : '' }}"
-            href="{{ route('teacher.reports.attendance') }}">
+            href="">
             <div
                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-single-copy-04 text-secondary text-sm opacity-10"></i>

@@ -12,4 +12,10 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $guarded = ['id'];
+
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
 }

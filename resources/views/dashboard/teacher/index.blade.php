@@ -2,7 +2,9 @@
 
 @section('title', 'Teacher Dashboard')
 
-@section('welcome-title', 'Welcome, ' . auth()->user()->username)
+@section('welcome-title')
+    Welcome, {{ $teacherData->name }}
+@endsection
 @section('welcome-subtitle', 'Manage your classes and track student progress')
 
 @section('content')
@@ -14,8 +16,8 @@
         <div class="row">
           <div class="col-8">
             <div class="numbers">
-              <p class="text-sm mb-0 text-uppercase font-weight-bold">Active Classes</p>
-              <h5 class="font-weight-bolder mb-0">8</h5>
+              <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Classes</p>
+              <h5 class="font-weight-bolder mb-0">{{ $totalClasses }}</h5>
             </div>
           </div>
           <div class="col-4 text-end">
@@ -35,7 +37,7 @@
           <div class="col-8">
             <div class="numbers">
               <p class="text-sm mb-0 text-uppercase font-weight-bold">Students</p>
-              <h5 class="font-weight-bolder mb-0">64</h5>
+              <h5 class="font-weight-bolder mb-0">{{ $totalStudents }}</h5>
             </div>
           </div>
           <div class="col-4 text-end">
@@ -74,7 +76,7 @@
         <div class="row">
           <div class="col-8">
             <div class="numbers">
-              <p class="text-sm mb-0 text-uppercase font-weight-bold">Lessons This Week</p>
+              <p class="text-sm mb-0 text-uppercase font-weight-bold">Lessons This Week</p> <!--TODO : Nanti add count by week perkelas -->
               <h5 class="font-weight-bolder mb-0">12</h5>
             </div>
           </div>

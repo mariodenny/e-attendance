@@ -7,7 +7,7 @@ use App\Models\Master\MasterCategory;
 class MasterCategoryRepository
 {
 
-    protected $model = $model;
+    protected $model;
 
     public function __construct(
         MasterCategory $model
