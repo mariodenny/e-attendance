@@ -23,7 +23,7 @@
 
   <!-- Trial Students -->
   <li class="nav-item">
-    <a class="nav-link {{ request()->routeIs('sa.trials*') ? 'active' : '' }}" 
+    <a class="nav-link {{ route('student-advisor.trial') }}" 
        href="">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="ni ni-spaceship text-warning text-sm opacity-10"></i>

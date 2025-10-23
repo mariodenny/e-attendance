@@ -22,12 +22,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/manager/dashboard', [ManagerController::class, 'dashboard'])->name('manager.dashboard');
     Route::get('/teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
-    Route::get('/student-advisor/dashboard', [StudentAdvisorController::class,'dashboard'])->name('student-advisor.dashboard');
 });
 
 
 // TODO : nanti per role masing2 ada job nya, pisahin routenya biar rapi , group per-role
-
 Route::middleware(['auth'])->group(function(){
-
+    Route::get('/student-advisor/dashboard', [StudentAdvisorController::class,'dashboard'])->name('student-advisor.dashboard');
+    Route::get('/student-advisor/trial',[StudentAdvisorController::class,'formTrial'])->name('student-advisor.trial');
 });

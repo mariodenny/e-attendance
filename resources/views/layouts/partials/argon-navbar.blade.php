@@ -46,7 +46,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end px-2 py-3" aria-labelledby="dropdownUser">
             <li>
-              <a class="dropdown-item border-radius-md" href="{{ route('profile.index') }}">
+              <a class="dropdown-item border-radius-md" href="">
                 <i class="ni ni-single-02 me-2"></i> My Profile
               </a>
             </li>

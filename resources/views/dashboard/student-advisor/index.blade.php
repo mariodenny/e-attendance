@@ -149,8 +149,8 @@
           <a href="" class="btn btn-sm bg-gradient-success mb-2">
             <i class="ni ni-chart-bar-32 me-1"></i> Progress Reports
           </a>
-          <a href="" class="btn btn-sm bg-gradient-warning mb-2">
-            <i class="ni ni-spaceship me-1"></i> Trial Students
+          <a href="{{ route('student-advisor.trial') }}" class="btn btn-sm bg-gradient-warning mb-2">
+            <i class="ni ni-spaceship me-1"></i> Trial Menu
           </a>
           <a href="" class="btn btn-sm bg-gradient-primary">
             <i class="ni ni-send me-1"></i> Parent Communications
