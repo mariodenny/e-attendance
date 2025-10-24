@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\TrialEnum;
 use App\Models\Master\MasterModule;
 use App\Models\Teacher;
 use App\Models\Trial;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Enum;
 
 class StudentAdvisorController extends Controller
 {
@@ -42,6 +44,8 @@ class StudentAdvisorController extends Controller
             'date' => 'nullable',
         ]);
 
+        $status = 'PENDING'; // default status
+        array_push($validatedData, $status);
         $trial = Trial::create($validatedData);
 
         if (!$trial) {
@@ -53,8 +57,34 @@ class StudentAdvisorController extends Controller
 
     // Todo -> Convert student trial
     // 3. Assign Student ke data trial 
-    public function convertTrialToStudent()
+    public function updateStatusTrial(Request $request, int $id)
     {
-        
+        $validateStatus = $request->validate([
+            'status' => ['required', new Enum(TrialEnum::class)]
+        ]);
+
+        $status = $validateStatus['status'];
+        $trial = Trial::findOrFail($id);
+
+        if (!$trial) {
+            return redirect()->route('student-advisor.trial')->with('error', 'Trial not found!');
+        }
+
+        // update status trial with few condition
+        if ($status == TrialEnum::CANCEL || $status == TrialEnum::JOIN) {
+            Trial::where('id', $id)->update([
+                'status' => $status
+            ]);
+
+            return redirect()->route('student-advisor.trial')->with('success', 'Data updated successfully!');
+        }
+
+        if ($status == TrialEnum::ENROLL) {
+            Trial::where('id', $id)->update([
+                'status' => $status
+            ]);
+
+            return view('dashboard.student-advisor.trial', compact('trial'));
+        }
     }
 }
