@@ -87,4 +87,29 @@ class StudentAdvisorController extends Controller
             return view('dashboard.student-advisor.trial', compact('trial'));
         }
     }
+
+    public function rescheduleDate(Request $request, int $id)
+    {
+        $validateDate = $request->validate([
+            'date' => 'required|date_format:Y-m-d H:i:s'
+        ]);
+
+        $date = $validateDate['date'];
+        $trial = Trial::findOrFail($id);
+        if (!$trial) {
+            return redirect()->route('student-advisor.trial')->with('error', 'Trial not found');
+        }
+
+        if ($date == $trial->date) {
+            return redirect()->route('student-advisor.trial')->with('error', 'Trial Schedule cannot equals to old schedule!');
+        }
+
+        if ($trial->status == TrialEnum::CANCEL || $trial->status == TrialEnum::JOIN || $trial->status == TrialEnum::ENROLL) {
+            return redirect()->route('student-advisor.trial')->with('error', 'Trial already ' . $trial->status);
+        }
+
+        Trial::where('id', $id)->update(['date' => $date]);
+
+        return redirect()->route('student-advisor.trial')->with('success', 'Rescheduled successfully!');
+    }
 }

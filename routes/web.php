@@ -30,5 +30,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/student-advisor/dashboard', [StudentAdvisorController::class, 'dashboard'])->name('student-advisor.dashboard');
     Route::get('/student-advisor/trial', [StudentAdvisorController::class, 'formTrial'])->name('student-advisor.trial');
     Route::post('/student-advisor/trial', [StudentAdvisorController::class, 'store'])->name('student-advisor.trial.save');
-    Route::put('/student-advisor/trial-status', [StudentAdvisorController::class, 'updateStatusTrial'])->name('student-advisor.tria.update');
+    Route::put('/student-advisor/{id}/trial-status', [StudentAdvisorController::class, 'updateStatusTrial'])->name('student-advisor.trial.update');
+    Route::put('/student-advisor/{id}/reschedule', [StudentAdvisorController::class, 'rescheduleDate'])->name('student-advisor.trial.reschedule');
 });
