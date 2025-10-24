@@ -44,6 +44,10 @@ class StudentAdvisorController extends Controller
 
         $trial = Trial::create($validatedData);
 
+        if (!$trial) {
+            return redirect()->route('student-advisor.trial')->with('error', 'Failed to save trial data!');
+        }
+
         return redirect()->route('student-advisor.trial')->with('success', 'Schedule Created successfully!s');
     }
 }
