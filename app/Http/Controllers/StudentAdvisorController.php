@@ -50,4 +50,11 @@ class StudentAdvisorController extends Controller
 
         return redirect()->route('student-advisor.trial')->with('success', 'Schedule Created successfully!s');
     }
+
+    // Todo -> Convert student trial
+    // 3. Assign Student ke data trial 
+    public function convertTrialToStudent()
+    {
+        
+    }
 }
