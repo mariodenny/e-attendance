@@ -11,11 +11,11 @@ class Trial extends Model
 
     public function teacher()
     {
-        return $this->hasOne(Teacher::class,'teacher_id','id');
+        return $this->belongsTo(Teacher::class, 'teacher_id', 'id');
     }
 
     public function module()
     {
-        return $this->hasOne(MasterModule::class,'module_id','id');
+        return $this->belongsTo(MasterModule::class, 'm_module_id', 'id');
     }
 }

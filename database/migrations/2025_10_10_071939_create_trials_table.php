@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('contact_person');
             $table->string('phone_no');
-            $table->date('date');
+            $table->datetime('date')->nullable();
             $table->enum('status', ['PENDING', 'JOIN', 'CANCEL', 'ENROLL']);
             $table->string('feedbacks')->nullable();
             $table->timestamps();

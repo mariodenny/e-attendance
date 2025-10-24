@@ -6,6 +6,7 @@ use App\Enum\TrialEnum;
 use App\Models\Master\MasterModule;
 use App\Models\Teacher;
 use App\Models\Trial;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Enum;
 
@@ -25,11 +26,17 @@ class StudentAdvisorController extends Controller
     // 1. panggil form untuk input
     public function formTrial()
     {
+        $today = Carbon::now('Asia/Jakarta');
 
         $teachers = Teacher::get();
-        $modules = MasterModule::get();
+        $modules = MasterModule::with('category')->get();
+        $trials = Trial::with(['teacher', 'module.category'])->get();
+        $upcomingTrials = Trial::with('student')
+            ->whereBetween('date', [$today, $today->copy()->addDays(2)])
+            ->orderBy('date', 'asc')
+            ->get();
 
-        return view('dashboard.student-advisor.trial', compact('teachers', 'modules'));
+        return view('dashboard.student-advisor.trial', compact('teachers', 'modules', 'trials', 'upcomingTrials'));
     }
 
     // 2. save data trial
@@ -41,7 +48,7 @@ class StudentAdvisorController extends Controller
             'name' => 'string|max:255|required',
             'contact_person' => 'string|max:255|required',
             'phone_no' => 'string|max:13',
-            'date' => 'nullable',
+            'date' => 'nullable'
         ]);
 
         $status = 'PENDING'; // default status

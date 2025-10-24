@@ -10,6 +10,6 @@ class MasterModule extends Model
 
     public function category()
     {
-        return $this->hasOne(MasterCategory::class, 'm_category_id', 'id');
+        return $this->belongsTo(MasterCategory::class, 'm_category_id', 'id');
     }
 }
