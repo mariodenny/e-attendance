@@ -8,4 +8,5 @@ enum TrialEnum: string
     case PENDING = 'PENDING';
     case ENROLL = 'ENROLL';
     case CANCEL = 'CANCEL';
+    case RESCHEDULE = 'RESCHEDULE';
 }

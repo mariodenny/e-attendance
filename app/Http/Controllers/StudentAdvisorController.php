@@ -73,26 +73,19 @@ class StudentAdvisorController extends Controller
         $status = $validateStatus['status'];
         $trial = Trial::findOrFail($id);
 
-        if (!$trial) {
-            return redirect()->route('student-advisor.trial')->with('error', 'Trial not found!');
-        }
+        $trial->update(['status' => $status]);
 
-        // update status trial with few condition
-        if ($status == TrialEnum::CANCEL || $status == TrialEnum::JOIN) {
-            Trial::where('id', $id)->update([
-                'status' => $status
-            ]);
+        $message = match ($status) {
+            TrialEnum::CANCEL => 'Trial cancelled!',
+            TrialEnum::JOIN   => 'Student joined successfully!',
+            TrialEnum::ENROLL => 'Trial enrolled successfully!',
+            TrialEnum::RESCHEDULE => 'Trial Reschedule Successfully!',
+            default            => 'Status updated successfully!'
+        };
 
-            return redirect()->route('student-advisor.trial')->with('success', 'Data updated successfully!');
-        }
-
-        if ($status == TrialEnum::ENROLL) {
-            Trial::where('id', $id)->update([
-                'status' => $status
-            ]);
-
-            return view('dashboard.student-advisor.trial', compact('trial'));
-        }
+        return redirect()
+            ->route('student-advisor.trial')
+            ->with('success', $message);
     }
 
     public function rescheduleDate(Request $request, int $id)
@@ -118,5 +111,13 @@ class StudentAdvisorController extends Controller
         Trial::where('id', $id)->update(['date' => $date]);
 
         return redirect()->route('student-advisor.trial')->with('success', 'Rescheduled successfully!');
+    }
+
+    protected function enrollNewStudentFromTrial(Request $request, int $id)
+    {
+        $validated = $request->validate([
+            
+        ]);
+        $trial = Trial::findOrFail($id);
     }
 }

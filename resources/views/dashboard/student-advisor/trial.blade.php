@@ -64,6 +64,19 @@
                         <button type="submit" class="btn bg-gradient-info">Submit</button>
                     </form>
                 </div>
+                @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+
+                @if(session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -156,7 +169,7 @@
                                         <td>
                                             <span class="mb-0">
                                                 {{ $trial->contact_person ?? '-' }} -
-                                                {{ $trial->phone_no ?? '-' }} 
+                                                {{ $trial->phone_no ?? '-' }}
                                             </span>
                                         </td>
 
@@ -184,10 +197,21 @@
                                                 </button>
                                                 <ul class="dropdown-menu"
                                                     aria-labelledby="dropdownMenuButton{{ $trial->id }}">
-                                                    <li><a class="dropdown-item" href="#">Reschedule</a></li>
-                                                    <li><a class="dropdown-item" href="#">Join</a></li>
-                                                    <li><a class="dropdown-item" href="#">Enroll</a></li>
-                                                    <li><a class="dropdown-item" href="#">Cancel</a></li>
+                                                    @foreach(['reschedule', 'join', 'enroll', 'cancel'] as $action)
+                                                    <li>
+                                                        <form method="POST"
+                                                            action="{{ route('student-advisor.trial.update', $trial->id) }}"
+                                                            class="d-inline">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="status"
+                                                                value="{{ strtoupper($action) }}">
+                                                            <button type="submit" class="dropdown-item">
+                                                                {{ ucfirst($action) }}
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </td>
