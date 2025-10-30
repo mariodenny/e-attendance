@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone_no');
             $table->datetime('date')->nullable();
             $table->enum('status', ['PENDING', 'JOIN', 'CANCEL', 'ENROLL']);
-            $table->string('feedbacks')->nullable();
+            $table->text('feedbacks')->nullable();
             $table->timestamps();
         });
     }

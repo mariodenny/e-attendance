@@ -65,11 +65,22 @@ class TeacherRepository
     }
 
     // TODO :: Flow teacher trial
-    public function getJoinTrialByTeacherId(int $teacherId)
+    public function getJoinTrialByTeacherId(int $teacherId, $month)
     {
         return $this->trialModel->with(['teacher', 'module'])
             ->where('teacher_id', $teacherId)
             ->where('status', 'JOIN')
+            ->whereNull('feedbacks')
+            ->whereMonth('date', $month)
             ->get();
+    }
+
+    public function updateFeedback($trialId, $feedback)
+    {
+        return $this->trialModel->where('id', $trialId)->update(
+            [
+                'feedbacks' => $feedback
+            ]
+        );
     }
 }

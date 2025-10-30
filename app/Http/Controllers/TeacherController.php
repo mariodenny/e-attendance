@@ -26,9 +26,23 @@ class TeacherController extends Controller
 
     public function trial()
     {
-        // $trials = $this->teacherService->getTrialByTeacherId()
         $teacherData = $this->teacherService->teacherData(Auth::user()->id);
         $teacherId = $teacherData->id;
-        return view('dashboard.teacher.trial', compact('teacherData'));
+        $trials = $this->teacherService->getTrialByTeacherId($teacherId);
+        return view('dashboard.teacher.trial', compact('teacherData', 'trials'));
+    }
+
+    public function updateFeedBack(Request $request, $trialId)
+    {
+        $validated = $request->validate([
+            'feedbacks' => 'string'
+        ]);
+
+        $updateFeedback = $this->teacherService->updateFeedback($trialId, $validated);
+        if (!$updateFeedback) {
+            return redirect()->route('teacher.trial')->with('error', 'update feedback failed!');
+        }
+
+        return redirect()->route('teacher.trial')->with('success', 'feedback  saved!');
     }
 }

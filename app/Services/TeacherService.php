@@ -4,7 +4,7 @@
 namespace App\Services;
 
 use App\Repositories\TeacherRepository;
-
+use Carbon\Carbon;
 
 class TeacherService
 {
@@ -40,6 +40,13 @@ class TeacherService
 
     public function getTrialByTeacherId($teacherId)
     {
-        return $this->teacherRepository->getJoinTrialByTeacherId($teacherId);
+        $today = Carbon::now('Asia/Jakarta');
+        $month = $today->month;
+        return $this->teacherRepository->getJoinTrialByTeacherId($teacherId, $month);
+    }
+
+    public function updateFeedback($trialId, $feedback)
+    {
+        return $this->teacherRepository->updateFeedback($trialId, $feedback);
     }
 }

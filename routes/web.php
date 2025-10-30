@@ -39,4 +39,5 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
     Route::get('/teacher/trial', [TeacherController::class, 'trial'])->name('teacher.trial');
+    Route::post('/teacher/trial/{id}/feedback', [TeacherController::class, 'updateFeedback'])->name('teacher.trial.feedback');
 });
