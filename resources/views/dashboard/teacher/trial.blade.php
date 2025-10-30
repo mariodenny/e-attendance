@@ -11,6 +11,8 @@
 @section('content')
 
 
-
+<div class="row">
+    <h1>HEY SUSAN KERJAIN INI</h1>
+</div>
 
 @endsection

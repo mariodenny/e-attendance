@@ -15,7 +15,7 @@ class StudentAdvisorController extends Controller
 {
     public function dashboard()
     {
-
+        // TODO :: Data dashboard
         $studentTotals = 4;
         $trialStudents = 12;
         $conversionRate = 10;
@@ -149,3 +149,4 @@ class StudentAdvisorController extends Controller
             ->with('success', 'Trial rescheduled successfully!');
     }
 }
+    

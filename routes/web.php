@@ -21,7 +21,6 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/manager/dashboard', [ManagerController::class, 'dashboard'])->name('manager.dashboard');
-    Route::get('/teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
 });
 
 
@@ -34,4 +33,10 @@ Route::middleware(['auth'])->group(function () {
     // Route::put('/student-advisor/{id}/reschedule', [StudentAdvisorController::class, 'rescheduleDate'])->name('student-advisor.trial.reschedule');
     Route::post('/student-advisor/trial/{id}/enroll', [StudentAdvisorController::class, 'enrollNewStudentFromTrial'])->name('student-advisor.trial.enroll');
     Route::post('/student-advisor/trial/{id}/reschedule', [StudentAdvisorController::class, 'rescheduleStudentTrial'])->name('student-advisor.trial.reschedule');
+});
+
+// Route Teacher
+Route::middleware(['auth'])->group(function () {
+    Route::get('/teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+    Route::get('/teacher/trial', [TeacherController::class, 'trial'])->name('teacher.trial');
 });

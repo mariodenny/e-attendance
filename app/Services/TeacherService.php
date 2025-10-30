@@ -6,17 +6,18 @@ namespace App\Services;
 use App\Repositories\TeacherRepository;
 
 
-class TeacherService{
-    
+class TeacherService
+{
+
 
     protected $teacherRepository;
 
     public function __construct(
         TeacherRepository $teacherRepository
-    ){
+    ) {
         $this->teacherRepository = $teacherRepository;
-    }   
-    
+    }
+
     public function createAttendance()
     {
         // 
@@ -37,4 +38,8 @@ class TeacherService{
         return $this->teacherRepository->countStudents($teacherId);
     }
 
+    public function getTrialByTeacherId($teacherId)
+    {
+        return $this->teacherRepository->getJoinTrialByTeacherId($teacherId);
+    }
 }
