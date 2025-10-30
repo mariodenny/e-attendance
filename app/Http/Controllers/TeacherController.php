@@ -27,7 +27,8 @@ class TeacherController extends Controller
     public function trial()
     {
         // $trials = $this->teacherService->getTrialByTeacherId()
-
-        return view('dashboard.teacher.trial');
+        $teacherData = $this->teacherService->teacherData(Auth::user()->id);
+        $teacherId = $teacherData->id;
+        return view('dashboard.teacher.trial', compact('teacherData'));
     }
 }
