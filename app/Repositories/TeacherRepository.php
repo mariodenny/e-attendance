@@ -70,6 +70,15 @@ class TeacherRepository
         return $this->trialModel->with(['teacher', 'module'])
             ->where('teacher_id', $teacherId)
             ->where('status', 'JOIN')
+            ->whereMonth('date', $month)
+            ->get();
+    }
+
+    public function getNullfeeback(int $teacherId, $month)
+    {
+        return $this->trialModel->with(['teacher', 'module'])
+            ->where('teacher_id', $teacherId)
+            ->where('status', 'JOIN')
             ->whereNull('feedbacks')
             ->whereMonth('date', $month)
             ->get();

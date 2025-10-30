@@ -29,7 +29,8 @@ class TeacherController extends Controller
         $teacherData = $this->teacherService->teacherData(Auth::user()->id);
         $teacherId = $teacherData->id;
         $trials = $this->teacherService->getTrialByTeacherId($teacherId);
-        return view('dashboard.teacher.trial', compact('teacherData', 'trials'));
+        $pendingFeedback = $this->teacherService->getemptyfeedbacks($teacherId);
+        return view('dashboard.teacher.trial', compact('teacherData', 'trials', 'pendingFeedback'));
     }
 
     public function updateFeedBack(Request $request, $trialId)

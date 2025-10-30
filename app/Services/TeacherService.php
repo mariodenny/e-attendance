@@ -45,6 +45,14 @@ class TeacherService
         return $this->teacherRepository->getJoinTrialByTeacherId($teacherId, $month);
     }
 
+    public function getemptyfeedbacks($teacherId)
+    {
+        $today = Carbon::now('Asia/Jakarta');
+        $month = $today->month;
+        return $this->teacherRepository->getNullfeeback($teacherId, $month);
+    }
+
+
     public function updateFeedback($trialId, $feedback)
     {
         return $this->teacherRepository->updateFeedback($trialId, $feedback);
