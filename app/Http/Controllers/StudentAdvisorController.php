@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enum\TrialEnum;
 use App\Models\Master\MasterModule;
+use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Trial;
 use Carbon\Carbon;
@@ -31,7 +32,7 @@ class StudentAdvisorController extends Controller
         $teachers = Teacher::get();
         $modules = MasterModule::with('category')->get();
         $trials = Trial::with(['teacher', 'module.category'])->get();
-        $upcomingTrials = Trial::with('student')
+        $upcomingTrials = Trial::with('teacher')
             ->whereBetween('date', [$today, $today->copy()->addDays(2)])
             ->orderBy('date', 'asc')
             ->get();
@@ -78,8 +79,6 @@ class StudentAdvisorController extends Controller
         $message = match ($status) {
             TrialEnum::CANCEL => 'Trial cancelled!',
             TrialEnum::JOIN   => 'Student joined successfully!',
-            TrialEnum::ENROLL => 'Trial enrolled successfully!',
-            TrialEnum::RESCHEDULE => 'Trial Reschedule Successfully!',
             default            => 'Status updated successfully!'
         };
 
@@ -113,11 +112,40 @@ class StudentAdvisorController extends Controller
         return redirect()->route('student-advisor.trial')->with('success', 'Rescheduled successfully!');
     }
 
-    protected function enrollNewStudentFromTrial(Request $request, int $id)
+    public function enrollNewStudentFromTrial(Request $request, int $id)
     {
         $validated = $request->validate([
-            
+            'm_module_id' => 'required|exists:master_modules,id',
+            'name' => 'required|string',
+            'date_of_birth' => 'nullable|string',
+            'address' => 'required|string',
+            'email' => 'required|email',
+            'school' => 'required|string',
+            'contact_person' => 'required|string',
+            'phone_no' => 'required|string|max:13',
         ]);
+
         $trial = Trial::findOrFail($id);
+
+        Student::create($validated);
+
+        $trial->update(['status' => TrialEnum::ENROLL]);
+
+        return redirect()
+            ->route('student-advisor.trial')
+            ->with('success', 'Student enrolled successfully!');
+    }
+    public function rescheduleStudentTrial(Request $request, int $id)
+    {
+        $validated = $request->validate([
+            'new_date' => 'required|date_format:Y-m-d\TH:i'
+        ]);
+
+        $trial = Trial::findOrFail($id);
+        $trial->update(['date' => $validated['new_date']]);
+
+        return redirect()
+            ->route('student-advisor.trial')
+            ->with('success', 'Trial rescheduled successfully!');
     }
 }
